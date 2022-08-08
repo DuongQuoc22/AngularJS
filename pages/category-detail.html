@@ -1,0 +1,22 @@
+<div ng-include src="'./pages/danhmuc.html'"></div>
+<div class="mt-5">
+    <h2>Chi tiết danh mục {{category.name}} #{{category.id}}</h2>
+</div>
+<div class="row mt-5">
+    <div class="text-title fs-4 fw-bold text-info">
+        Sản Phẩm Liên Quan
+        <hr>
+    </div>
+    <div class="row text-center py-5">
+        <div class="col-md-4 col-sm-6 col-xs-12 mt-5" ng-repeat="pro in category.products">
+            <div class="card border-0">
+                <div class="card-body">
+                    <a href="#!/products/detail/{{pro.id}}"><img src="{{pro.imgUrl}}" alt=""></a>
+                    <div class="fs-5 fw-bold">
+                        {{pro.name}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

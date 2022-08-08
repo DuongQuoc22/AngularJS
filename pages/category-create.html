@@ -1,0 +1,27 @@
+<form class="col-3" name="cateForm">
+    <div class="form-group">
+        <label class="py-2 fw-bold fs-5">Tên Danh Mục</label>
+        <!-- Validate form
+        1.định nghĩa loại lỗi cần bắt cho input
+        2. Định nghĩa tên cho form và input -->
+
+        <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Vui lòng nhập tên danh mục cần thêm" 
+            ng-model="categoryName"
+            name="cateName"
+            required
+            minlength="4"
+            maxlength="32"
+            >
+            <div ng-if="cateForm.cateName.$touched || cateForm.cateName.$dirty">
+                <span class="text-danger">{{cateForm.cateName.$error.required && 'Trường này không được bỏ trống!'}}</span>
+                <span class="text-danger">{{cateForm.cateName.$error.minlength && 'Tối thiểu 4'}}</span>
+                <span class="text-danger">{{cateForm.cateName.$error.maxlength && 'Tối đa 32'}}</span>
+                <!-- <span class="text-danger">{{cateForm.$invalid}}</span> -->
+
+            </div>
+    </div>
+    <button class="btn btn-outline-success mt-5" ng-disabled="cateForm.$invalid" ng-click="onSubmit()">Thêm</button>
+</form>

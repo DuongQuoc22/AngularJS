@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoàng Kim Design</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo-hoang-kim-design-final.png">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/404.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="./libs/angular.min.js">
+    <link rel="stylesheet" href="css/list-product.css">
+    <link rel="stylesheet" href="css/lien-he.css">
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+        }
+        header{
+            height: 100%;
+            width: 100%;
+        }
+        nav{
+            font-size: 22px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .nav-item>a{
+            color: #cea425;
+        }
+        .navbar-brand>img{
+            height: 80px;
+            width: 120px;
+        }
+        .nav-item>.nav-link{
+          margin-top: 20px;
+          margin-left: 50px;
+        }
+
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.navbar,
+.navbar1,
+.navbar2,
+.navbar3,
+.navbar4 {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  background-color: #8e54ff;
+}
+
+.header,
+.header2,
+.header3,
+.header4,
+.header1 {
+  width: 100%;
+  height: 60px;
+}
+
+.menu,
+.menu2,
+.menu3,
+.menu4,
+.menu1 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0 100px;
+}
+
+.menu li,
+.menu2 li,
+.menu3 li,
+.menu4 li,
+.menu1 li {
+  display: block;
+  height: 100%;
+  font-size: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px #8e54e9;
+  transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  text-align: center;
+  padding: 0 10px;
+  margin-right: 30px;
+}
+    </style>
+</head>
+<body>
+  <!-- nhúng like share cmt -->
+  <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=1153192428476246&autoLogAppEvents=1" nonce="ML0wGeEf"></script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=1153192428476246&autoLogAppEvents=1" nonce="e7DU0DFz"></script>
+<!-- end -->
+
+<div class="container" ng-app="assignment_2" ng-controller="appController">
+  <header class="row">
+    <div class="container">
+      <nav class="navbar justify-content-center navbar-expand-lg" style="background-color: white; margin-left: 10px;">
+        <div class="container-fluid">
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#!/home">Trang Chủ</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#!/product">Sản Phẩm</a>
+                      </li>
+                      
+                      <li class="nav-item me-5">
+                        <a class="nav-link" href="#!/lien-he">Liên Hệ</a>
+                      </li>
+                    
+                      <a class="navbar-brand" href="#!/home"><img src="images/logo-hoang-kim-design-final.png" alt=""></a>
+                      
+                      <li class="nav-item">
+                        <a class="nav-link" href="#!/about">Giới Thiệu</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#!/cart">Giỏ Hàng</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="./images/285655_user_icon.png" alt="">
+                          <span>{{auth.email ? auth.name : 'Đăng Nhập'}}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#!/login" ng-show="auth.email == null">Đăng Nhập</a></li>
+                          <li><a class="dropdown-item" href="#!/register" ng-show="auth.email == null">Đăng Ký</a></li>
+                          <li><a class="dropdown-item" href="#!/register" ng-hide="auth.email == null" ng-click="logout1()">Đăng Xuất</a></li>
+                          <li><a class="dropdown-item" href="#" ng-hide="auth.email == null">Cập Nhật Tài Khoản</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#!/admin/products" ng-show="auth.name === 'Admin'">Quản Lý Sản Phẩm</a></li>
+                          <li><a class="dropdown-item" href="#!/admin/categories" ng-show="auth.name === 'Admin'">Quản Lý Danh Mục</a></li>
+                        </ul>
+                        
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              
+              
+        </header>
+          <main>
+            <div ng-view>
+
+            </div>
+        </main>
+        <footer class="bg-light pb-1">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#!/home" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#!/about" class="nav-link px-2 text-muted">About</a></li>
+          </ul>
+          <p class="text-center text-muted">© 2022 Company, Inc</p>
+        </footer>
+      </div>
+      <script src="./libs/angular.min.js"></script>
+      <script src="./libs/angular-route.min.js"></script>
+       <!-- Thư viện ngStorage dùng để bộ trợ tính năng lưu trữ trong localStorage -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+
+      <!-- Controller -->
+          <script src="./controllers/CategoryController.js"></script>
+          <script src="./controllers/CategoryCreateController.js"></script>
+          <script src="./controllers/CategoryDetailController.js"></script>
+          <script src="./controllers/ProductController.js"></script>
+          <script src="./controllers/CategoryDeleteController.js"></script>
+          <script src="./controllers/ProductCreateController.js"></script>
+          <script src="./controllers/ProductDeleteController.js"></script>
+          <script src="./controllers/ProductDetailController.js"></script>
+          <script src="./controllers/LoginController.js"></script>
+          <script src="./controllers/RegisterController.js"></script>
+      <!-- end -->
+    <script>
+        var app = angular.module("assignment_2",["ngRoute","ngStorage"]);
+        app.controller("appController",function($scope, $localStorage){
+          $localStorage.$default({
+                cart: [],
+                cartItems: 0,
+                auth: {}
+            });
+            $scope.auth = $localStorage.auth;
+            
+            // $scope.auth là cái cần cập nhật theo thông tin $localstorage.auth
+            // Lắng nghe sự thay đổi của $localStorage.auth để cập nhật lại
+            $scope.$watch(
+                function () {
+                    // Lắng nghe
+                    return $localStorage.auth
+                },
+                function () {
+                    $scope.auth = $localStorage.auth;
+                }
+            )
+            // $scope.$watch(
+            //     function () {
+            //         // Lắng nghe
+            //         return $localStorage.cartItems
+            //     },
+            //     function () {
+            //         $scope.cartItems = $localStorage.cartItems;
+            //     }
+
+                // Giỏ hàng:
+                // 1. Thêm mới khi giỏ hàng chưa có gì -> push item (có kèm số lượng = 1) vào mảng
+                // 2. Thêm mới khi giỏ hàng đã có
+                // 2.1 Kiểm tra xem item được thêm đã tồn tại trong giỏ chưa, nếu có thì tăng số lượng +1, nếu chưa có thì push
+                // 3. Xoá sản phẩm trong giỏ: tìm và filter lọc bỏ sản phẩm đó
+            // xóa local
+            $scope.logout1= function(){
+             $scope.auth = localStorage.clear();
+            }
+        });
+
+
+        
+    </script>
+    <script src="./routes.js"></script>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/62dcad0454f06e12d88b01e9/1g8n07mji';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<div class="row pt-5 py-5">
+    <div class="col-6 offset-3">
+        <div class="py-2">
+            <a href="#!/admin/categories/create"><button class="btn btn-success">Thêm Mới</button></a>
+        </div>
+        <table class="table table-striped text-center">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            <tr ng-repeat="cate in categories">
+                <td>{{cate.id}}</td>
+                <td>{{cate.name}}</td>
+                <td>
+                    <a href="#!/admin/categories/edit/{{cate.id}}"><button class="btn btn-primary">Sửa</button></a>
+                    <a href="#!/admin/categories/delete/{{cate.id}}"><button class="btn btn-danger">Xóa</button></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

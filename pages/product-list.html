@@ -1,0 +1,98 @@
+
+<div class="container pt-5 py-5">
+    <div class="row">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="10000">
+                <img src="images/2-3.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="images/banner-1.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+    <!-- <div class="container">
+        <div class="row mt-5">
+            <div class="card border-0 bg-light">
+                <div class=" mt-3 text-center fw-bold fs-4 text-info">
+                  DANH MỤC SẢN PHẨM
+                  <hr>
+                </div>
+                <div class="card-body list-product">
+                    <div class="row text-center fw-bold fs-5">
+                        <div class="col-md-3 col-sm-4 col-xs-12 pt-3 py-3" ng-repeat="category in categories">
+                            <div><a href="#!/categories/detail/{{+category.id}}">{{category.name}}</a></div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div> -->
+    <div ng-include src="'./pages/danhmuc.html'"></div>
+    <div class="row mt-5">
+        <div class="text-title fs-4 fw-bold text-info">
+            Sản Phẩm Nổi Bật
+            <hr>
+        </div>
+        <div class="row text-center py-5">
+            <div class="col-md-4 col-sm-6 col-xs-12 mt-5" ng-repeat="pro in products">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <a href="#!/products/detail/{{pro.id}}"><img src="{{pro.imgUrl}}" alt=""></a>
+                        <div class="fs-5 fw-bold">
+                            {{pro.name}}
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="text-title fs-4 text-info fw-bold">
+            NỘI THẤT PHÒNG KHÁCH
+            <hr>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4 col-sm-6 col-xs-12 mt-5">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <a href="#!/item"><img src="images/bo-sofa.jpg" alt=""></a>
+                        <div class="fs-5 fw-bold">
+                            Ghế sofa
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 mt-5">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <a href="#"><img src="images/ban-sofa-doi-mat-da-Lux2.jpg" alt=""></a>
+                        <div class="fs-5 fw-bold">
+                            Bàn trà
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 mt-5">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <a href="#"><img src="images/ke-tivi-1.png" alt=""></a>
+                        <div class="fs-5 fw-bold">
+                            Kệ tivi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

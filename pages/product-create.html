@@ -1,0 +1,132 @@
+<div class="pt-5 py-5">
+    <div class="text-center text-info fs-2 fw-bold">
+        Thêm Sản Phẩm
+        <hr>
+    </div>
+    <div class="row col-8 offset-2">
+        <form class="pt-5" name="productForm">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label class="py-2 fw-bold fs-5">Tên Sản Phẩm</label>
+                        <!-- Validate form
+                        1.định nghĩa loại lỗi cần bắt cho input
+                        2. Định nghĩa tên cho form và input -->
+                
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Vui lòng nhập tên sản phẩm cần thêm" 
+                            ng-model="productName"
+                            name="productName"
+                            required
+                            minlength="4"
+                            maxlength="32"
+                            >
+                            <div ng-if="productForm.productName.$touched || productForm.productName.$dirty">
+                                <span class="text-danger">{{productForm.productName.$error.required && 'Trường này không được bỏ trống!'}}</span>
+                                <span class="text-danger">{{productForm.productName.$error.minlength && 'Tối thiểu 4'}}</span>
+                                <span class="text-danger">{{productForm.productName.$error.maxlength && 'Tối đa 32'}}</span>
+                                <!-- <span class="text-danger">{{cateForm.$invalid}}</span> -->
+                
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="py-2 fw-bold fs-5">Màu Sắc</label>
+                        <input type="text" ng-model="productColor" placeholder="Nhập màu sắc của sản phẩm" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="py-2 fw-bold fs-5">Kích Thước</label>
+                        <input type="text"
+                        ng-model="productSize"
+                         required 
+                         placeholder="Dài x Rộng x Cao" 
+                         minlength="4" 
+                         maxlength="32" 
+                         name="productSize" 
+                         class="form-control"
+                         >
+                        <div ng-if="productForm.productSize.$touched || productForm.productSize.$dirty">
+                            <span class="text-danger">{{productForm.productSize.$error.required && 'Trường này không được bỏ trống!'}}</span>
+                            <span class="text-danger">{{productForm.productSize.$error.minlength && 'Tối thiểu 4'}}</span>
+                            <span class="text-danger">{{productForm.productSize.$error.maxlength && 'Tối đa 32'}}</span>
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <label class="py-2 fw-bold fs-5">Hãng</label>
+                        <input type="text" name="productBrand"
+                            ng-model="productBrand"
+                            required
+                            placeholder="Nhập hãng sản xuất"
+                            minlength="4"
+                            maxlength="32"
+                            class="form-control"
+                        >
+                        <div ng-if="productForm.productBrand.$touched || productForm.productBrand.$dirty">
+                            <span class="text-danger">{{productForm.productBrand.$error.required && 'Trường này không được bỏ trống!'}}</span>
+                            <span class="text-danger">{{productForm.productBrand.$error.minlength && 'Tối thiểu 4'}}</span>
+                            <span class="text-danger">{{productForm.productBrand.$error.maxlength && 'Tối đa 32'}}</span>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label class="py-2 fw-bold fs-5">Giá Thành</label>
+                        <input type="number" name="productPrice"
+                            ng-model="productPrice"
+                            required
+                            placeholder="Nhập giá thành sản phẩm"
+                            minlength="4"
+                            maxlength="32"
+                            class="form-control"
+                            min="0"
+                        >
+                        <div ng-if="productForm.productPrice.$touched || productForm.productPrice.$dirty">
+                            <span class="text-danger">{{productForm.productPrice.$error.required && 'Trường này không được bỏ trống!'}}</span>
+                            <span class="text-danger">{{productForm.productPrice.$error.minlength && 'Tối thiểu 4'}}</span>
+                            <span class="text-danger">{{productForm.productPrice.$error.maxlength && 'Tối đa 32'}}</span>
+                            <span class="text-danger">{{productForm.productPrice.$error.min && 'Không nhận giá trị âm'}}</span>
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <label class="py-2 fw-bold fs-5">Số Lượng</label>
+                        <input type="number" name="productAmount"
+                            ng-model="productAmount"
+                            required
+                            placeholder="Nhập số lượng sản phẩm"
+                            class="form-control"
+                            min="0"
+                        >
+                        <div ng-if="productForm.productAmount.$touched || productForm.productAmount.$dirty">
+                            <span class="text-danger">{{productForm.productAmount.$error.required && 'Trường này không được bỏ trống!'}}</span>
+                            <span class="text-danger">{{productForm.productAmount.$error.min && 'Không nhận giá trị âm'}}</span>
+                           
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <label class="py-2 fw-bold fs-5">Ảnh</label>
+                        <input type="file" name="productImg"
+                        onchange="angular.element(this).scope().onChangeImage(event)" ng-model="productImg"
+                            class="form-control"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label class="py-2 fs-5 fw-bold">Danh Mục</label>
+                        <select name="categoryId" ng-model="categoryId"  class="form-control">
+                            <option value="" selected disabled>--- Chọn Danh Mục ---</option>
+                            <option ng-repeat="item in categories" value="{{item.id}}" ng-selected="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            
+           
+                <button class="btn btn-outline-success mt-5" ng-disabled="productForm.$invalid" ng-click="onSubmit1()">Thêm</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="pt-5 py-5">
+    <div class="text-center text-info fs-2 fw-bold">
+        Danh Sách Sản Phẩm
+        <hr>
+    </div>
+    <div class="row pt-5 py-5">
+        <div class="py-2">
+            <a href="#!/admin/products/create"><button class="btn btn-outline-success">Thêm Mới</button></a>
+        </div>
+        <table class="table table-striped text-center">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Size</th>
+                <th>Brand</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+            <tr ng-repeat="product in products">
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.color}}</td>
+                <td>{{product.size}}</td>
+                <td>{{product.brand}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.amount}}</td>
+                <td><img width="80px" height="80px" src="{{product.imgUrl}}" alt=""></td>
+                <td>{{product.category.name}}</td>
+                <td>
+                    <a href="#!/admin/products/edit/{{product.id}}"><button class="btn btn-primary">Sửa</button></a>
+                    <a href="#!/admin/products/delete/{{product.id}}"><button class="btn btn-danger">Xóa</button></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
